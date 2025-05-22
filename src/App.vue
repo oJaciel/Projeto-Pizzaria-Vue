@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Navbar :logo="logo_src" :alt="app_name" />
     <router-view></router-view>
     <Footer />
   </div>
@@ -14,6 +14,12 @@ export default {
     Navbar,
     Footer,
   },
+  data() {
+    return {
+      logo_src: "/img/logo.png",
+      app_name: "Pizzaria"
+    }
+  }
 };
 </script>
   
@@ -28,16 +34,7 @@ export default {
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+body {
+  margin: 0;
 }
 </style>
