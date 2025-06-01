@@ -1,7 +1,6 @@
 <template>
   <div>
     <Banner />
-    <h1>Monte a sua pizza</h1>
     <PizzaForm />
   </div>
 </template>
