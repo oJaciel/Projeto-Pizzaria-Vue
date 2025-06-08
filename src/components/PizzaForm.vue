@@ -1,26 +1,47 @@
 <template>
-  <div class="form-container">
+  <div class="form-container" @submit="criarPizza">
     <form class="pizza-form" action="">
-      <label for="client_name" class="form-label">Nome do cliente:</label>
+      <label for="nome" class="form-label">Nome do cliente:</label>
       <input
         type="text"
-        name="client_name"
-        id="client_name"
+        name="nome"
+        id="nome"
+        v-model="nome"
         placeholder="Digite o seu nome"
       />
 
       <label for="massa" class="form-label">Escolha a massa:</label>
-      <select name="massa" id="massa"></select>
+      <select name="massa" id="massa" v-model="massa">
+        <option value="">Selecione o sabor da pizza</option>
+        <option v-for="massa in massas" :key="massa.id" :value="massa.tipo">
+          {{ massa.tipo }}
+        </option>
+      </select>
 
       <label for="sabor" class="form-label"
         >Escolha o sabor da sua pizza:</label
       >
-      <select name="sabor" id="sabor"></select>
+      <label for="sabor">Escolha o sabor da sua pizza:</label>
+      <select name="sabor" id="sabor" v-model="sabor">
+        <option value="">Selecione o sabor da pizza</option>
+        <option v-for="sabor in sabores" :key="sabor.id" :value="sabor.tipo">
+          {{ sabor.tipo }}
+        </option>
+      </select>
 
-      <label for="opcionais" class="form-label">Selecione os opcionais:</label>
-      <div class="checkbox-wrapper">
-        <input type="checkbox" name="opcionais" id="opcionais" />
-        <label for="opcionais">Borda com catupiry</label>
+      <label for="opcionais">Selecione os opcionais</label>
+      <div
+        class="checkbox-container"
+        v-for="opcional in opcionaisdata"
+        :key="opcional.id"
+      >
+        <input
+          type="checkbox"
+          name="opcionais"
+          v-model="opcionais"
+          :value="opcional.tipo"
+        />
+        <span> {{ opcional.tipo }} </span>
       </div>
 
       <input type="submit" value="Criar minha pizza!" class="submit-btn" />
@@ -31,6 +52,60 @@
 <script>
 export default {
   name: "PizzaForm",
+  data() {
+    return {
+      massas: null,
+      sabores: null,
+      opcionaisdata: null,
+      nome: null,
+      massa: null,
+      sabor: null,
+      opcionais: [],
+    };
+  },
+  methods: {
+    async getIngredientes() {
+      const req = await fetch("http://localhost:3000/ingredientes");
+      const data = await req.json();
+
+      this.massas = data.massas;
+      this.sabores = data.sabores;
+      this.opcionaisdata = data.opcionais;
+    },
+    async criarPizza(e) {
+      e.preventDefault();
+      const data = {
+        nome: this.nome,
+        massa: this.massa,
+        sabor: this.sabor,
+        opcionais: Array.from(this.opcionais),
+        status: "Solicitado",
+      };
+      console.log(data);
+
+      const dataJson = JSON.stringify(data);
+
+      const req = await fetch("http://localhost:3000/pizzas", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: dataJson,
+      });
+
+      const res = await req.json();
+      console.log(res);
+
+      //Tratar mensagens de retorno
+
+      //Limpar campos do formulário
+      this.nome = ""
+      this.massa = ""
+      this.sabor = ""
+      this.opcionais = []
+    },
+  },
+  mounted() {
+    this.getIngredientes();
+  },
 };
 </script>
 

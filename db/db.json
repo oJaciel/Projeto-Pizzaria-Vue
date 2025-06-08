@@ -1,6 +1,6 @@
 {
     "ingredientes": {
-      "massa": [
+      "massas": [
         {
           "id": 1,
           "tipo": "Fina"
@@ -18,7 +18,7 @@
           "tipo": "Normal"
         }
       ],
-      "Sabores": [
+      "sabores": [
         {
           "id": 1,
           "tipo": "Calabresa"
@@ -47,19 +47,19 @@
       "opcionais": [
         {
           "id": 1,
-          "tipo": "Borda com catupiry"
+          "tipo": "Cebola"
         },
         {
           "id": 2,
-          "tipo": "Borda com cheddar"
+          "tipo": "Bacon"
         },
         {
           "id": 3,
-          "tipo": "Borda com catupiry e bacon"
+          "tipo": "Mussarela"
         },
         {
           "id": 4,
-          "tipo": "Borda de caramelo"
+          "tipo": "Azeitona"
         }
       ]
     },

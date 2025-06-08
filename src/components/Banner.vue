@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>Monte sua Pizza</h1>
+    <div id="main_banner">
+        
     </div>
 </template>
 
@@ -11,5 +11,13 @@ export default {
 </script>
 
 <style scoped>
-
+    #main_banner {
+        background-image: url('/public/img/pizza.jpg');
+        background-position: 0 - 250px;
+        background-size: cover;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
 </style>
