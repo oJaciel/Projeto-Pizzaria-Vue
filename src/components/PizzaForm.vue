@@ -1,5 +1,5 @@
 <template>
-  <div class="form-container">
+  <div class="form-container" @submit="criarPizza">
     <form class="pizza-form" action="">
       <label for="nome" class="form-label">Nome do cliente:</label>
       <input
@@ -30,7 +30,11 @@
       </select>
 
       <label for="opcionais">Selecione os opcionais</label>
-      <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
+      <div
+        class="checkbox-container"
+        v-for="opcional in opcionaisdata"
+        :key="opcional.id"
+      >
         <input
           type="checkbox"
           name="opcionais"
@@ -67,6 +71,36 @@ export default {
       this.massas = data.massas;
       this.sabores = data.sabores;
       this.opcionaisdata = data.opcionais;
+    },
+    async criarPizza(e) {
+      e.preventDefault();
+      const data = {
+        nome: this.nome,
+        massa: this.massa,
+        sabor: this.sabor,
+        opcionais: Array.from(this.opcionais),
+        status: "Solicitado",
+      };
+      console.log(data);
+
+      const dataJson = JSON.stringify(data);
+
+      const req = await fetch("http://localhost:3000/pizzas", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: dataJson,
+      });
+
+      const res = await req.json();
+      console.log(res);
+
+      //Tratar mensagens de retorno
+
+      //Limpar campos do formulário
+      this.nome = ""
+      this.massa = ""
+      this.sabor = ""
+      this.opcionais = []
     },
   },
   mounted() {
