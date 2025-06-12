@@ -1,4 +1,5 @@
 <template>
+<Message :msg="msg" v-show="msg"/>
   <div class="form-container" @submit="criarPizza">
     <form class="pizza-form" action="">
       <label for="nome" class="form-label">Nome do cliente:</label>
@@ -50,8 +51,12 @@
 </template>
 
 <script>
+import Message from '../components/Message.vue'
 export default {
   name: "PizzaForm",
+  components: {
+    Message
+  },
   data() {
     return {
       massas: null,
@@ -61,6 +66,7 @@ export default {
       massa: null,
       sabor: null,
       opcionais: [],
+      msg: null,
     };
   },
   methods: {
@@ -95,6 +101,9 @@ export default {
       console.log(res);
 
       //Tratar mensagens de retorno
+      this.msg="Pedido realizado com sucesso!"
+
+      setTimeout(() => this.msg = '', 3000)
 
       //Limpar campos do formulário
       this.nome = ""
