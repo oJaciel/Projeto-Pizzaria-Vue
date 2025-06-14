@@ -1,81 +1,103 @@
 {
-    "ingredientes": {
-      "massas": [
-        {
-          "id": 1,
-          "tipo": "Fina"
-        },
-        {
-          "id": 2,
-          "tipo": "Integral"
-        },
-        {
-          "id": 3,
-          "tipo": "Sem gluten"
-        },
-        {
-          "id": 4,
-          "tipo": "Normal"
-        }
-      ],
-      "sabores": [
-        {
-          "id": 1,
-          "tipo": "Calabresa"
-        },
-        {
-          "id": 2,
-          "tipo": "4 queijos"
-        },
-        {
-          "id": 3,
-          "tipo": "Portuguesa"
-        },
-        {
-          "id": 4,
-          "tipo": "Marguerita"
-        },
-        {
-          "id": 5,
-          "tipo": "Mussarela"
-        },
-        {
-          "id": 6,
-          "tipo": "Frango com catupiry"
-        }
-      ],
-      "opcionais": [
-        {
-          "id": 1,
-          "tipo": "Cebola"
-        },
-        {
-          "id": 2,
-          "tipo": "Bacon"
-        },
-        {
-          "id": 3,
-          "tipo": "Mussarela"
-        },
-        {
-          "id": 4,
-          "tipo": "Azeitona"
-        }
-      ]
-    },
-    "status": [
+  "ingredientes": {
+    "massas": [
       {
         "id": 1,
-        "tipo": "Solicitado"
+        "tipo": "Fina"
       },
       {
         "id": 2,
-        "tipo": "Em produção"
+        "tipo": "Integral"
       },
       {
         "id": 3,
-        "tipo": "Finalizado"
+        "tipo": "Sem gluten"
+      },
+      {
+        "id": 4,
+        "tipo": "Normal"
       }
     ],
-    "pizzas": [ ]
-  }
+    "sabores": [
+      {
+        "id": 1,
+        "tipo": "Calabresa"
+      },
+      {
+        "id": 2,
+        "tipo": "4 queijos"
+      },
+      {
+        "id": 3,
+        "tipo": "Portuguesa"
+      },
+      {
+        "id": 4,
+        "tipo": "Marguerita"
+      },
+      {
+        "id": 5,
+        "tipo": "Mussarela"
+      },
+      {
+        "id": 6,
+        "tipo": "Frango com catupiry"
+      }
+    ],
+    "opcionais": [
+      {
+        "id": 1,
+        "tipo": "Cebola"
+      },
+      {
+        "id": 2,
+        "tipo": "Bacon"
+      },
+      {
+        "id": 3,
+        "tipo": "Mussarela"
+      },
+      {
+        "id": 4,
+        "tipo": "Azeitona"
+      }
+    ]
+  },
+  "status": [
+    {
+      "id": "1",
+      "tipo": "Solicitado"
+    },
+    {
+      "id": "2",
+      "tipo": "Em produção"
+    },
+    {
+      "id": "3",
+      "tipo": "Finalizado"
+    }
+  ],
+  "pizzas": [
+    {
+      "id": "ddfc",
+      "nome": "João",
+      "massa": "Normal",
+      "sabor": "4 queijos",
+      "opcionais": [
+        "Bacon",
+        "Cebola"
+      ],
+      "status": "Solicitado"
+    },
+    {
+      "id": "57eb",
+      "nome": "Jaciel",
+      "massa": "Integral",
+      "sabor": "Portuguesa",
+      "opcionais": [
+        "Bacon"
+      ],
+      "status": "Solicitado"
+    }
+  ]
+}
